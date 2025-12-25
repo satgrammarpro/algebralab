@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MATH VOCABULARY TRANSLATOR</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="logo">
+      <span class="logo-mark">MV</span>
+      <div>
+        <div class="logo-title">MATH VOCABULARY TRANSLATOR</div>
+        <div class="logo-tag">Turn math words into math.</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#home" class="nav-link" data-route>Home</a>
+      <a href="#learn" class="nav-link" data-route>Learn</a>
+      <a href="#practice" class="nav-link" data-route>Practice</a>
+      <a href="#mistakes" class="nav-link" data-route>Mistake Dashboard</a>
+      <a href="#about" class="nav-link" data-route>About</a>
+    </nav>
+    <div class="header-actions">
+      <label class="toggle"><input type="checkbox" id="themeToggle" /> <span>Dark</span></label>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="page active" aria-labelledby="home-title">
+      <div class="hero">
+        <div>
+          <h1 id="home-title">Translate math wording instantly</h1>
+          <p class="muted">Type any math phrase. Get the algebra, an explanation, common traps, and practice.</p>
+          <div class="search-bar">
+            <input id="phraseInput" type="text" placeholder="e.g., five more than twice a number" aria-label="Phrase to translate" />
+            <button id="translateBtn" class="primary">Translate</button>
+          </div>
+          <div class="examples">
+            <label for="exampleSearch">Example library</label>
+            <input id="exampleSearch" type="search" placeholder="Search 100+ phrases" />
+            <div id="exampleList" class="example-list" aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="card output" aria-live="polite">
+          <div class="output-row">
+            <div>
+              <h2>Plain expression</h2>
+              <div id="plainOutput" class="output-value">—</div>
+            </div>
+            <div class="copy-actions">
+              <button id="copyExpression" class="ghost">Copy expression</button>
+              <button id="copyLatex" class="ghost">Export as LaTeX</button>
+            </div>
+          </div>
+          <div class="output-row">
+            <div>
+              <h2>LaTeX</h2>
+              <div id="latexOutput" class="output-value">—</div>
+            </div>
+          </div>
+          <div>
+            <h3>Explanation</h3>
+            <ol id="explanationList" class="explanation"></ol>
+          </div>
+          <div>
+            <h3>Common traps</h3>
+            <ul id="trapsList" class="traps"></ul>
+          </div>
+          <div>
+            <h3>Practice (same pattern)</h3>
+            <div id="practiceArea"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="learn" class="page" aria-labelledby="learn-title">
+      <h1 id="learn-title">Curriculum</h1>
+      <p class="muted">Concept-first mini-lessons with examples and quick checks.</p>
+      <div id="learnGrid" class="grid"></div>
+    </section>
+
+    <section id="practice" class="page" aria-labelledby="practice-title">
+      <div class="flex-between">
+        <div>
+          <h1 id="practice-title">Practice</h1>
+          <p class="muted">Choose difficulty, topic, and timed mode. Track your streak.</p>
+        </div>
+        <div class="controls">
+          <label>Difficulty
+            <select id="practiceDifficulty">
+              <option>Elementary</option>
+              <option>Middle</option>
+              <option>Algebra I</option>
+              <option>Algebra II</option>
+              <option>Precalculus</option>
+              <option>Calculus</option>
+              <option>Stats</option>
+            </select>
+          </label>
+          <label>Topic
+            <select id="practiceTopic"></select>
+          </label>
+          <label><input type="checkbox" id="timedMode" /> Timed (45s)</label>
+          <button id="startPractice" class="primary">Start</button>
+        </div>
+      </div>
+      <div id="practicePanel" class="card"></div>
+    </section>
+
+    <section id="mistakes" class="page" aria-labelledby="mistakes-title">
+      <div class="flex-between">
+        <div>
+          <h1 id="mistakes-title">Mistake Dashboard</h1>
+          <p class="muted">Your logged errors and progress (stored locally).</p>
+        </div>
+        <button id="resetStats" class="ghost">Reset data</button>
+      </div>
+      <div class="dashboard">
+        <canvas id="mistakeChart" width="600" height="300" aria-label="Mistake chart"></canvas>
+        <div class="card" id="mistakeSummary"></div>
+      </div>
+    </section>
+
+    <section id="about" class="page" aria-labelledby="about-title">
+      <h1 id="about-title">About & How it works</h1>
+      <div class="card">
+        <p>MATH VOCABULARY TRANSLATOR is a concept-first, rule-based parser (no AI). All data stays on your device.</p>
+        <ul>
+          <li>Pattern rules map language chunks to algebraic symbols.</li>
+          <li>Common traps flag reversal (“less than”), inequality direction, missing parentheses, and unit confusion.</li>
+          <li>Practice, history, mistake logs, and feedback are stored in <code>localStorage</code>.</li>
+        </ul>
+        <div class="code-card">
+          <h3>Local testing</h3>
+          <ol>
+            <li>Open <code>index.html</code> in a browser (offline works).</li>
+            <li>Optional: run <code>npm install && npm start</code> if you add tooling.</li>
+          </ol>
+          <h3>Deploy to GitHub Pages</h3>
+          <ol>
+            <li>Push this folder to a GitHub repo.</li>
+            <li>Enable GitHub Pages from the <em>Settings → Pages</em> tab (serve from main branch root).</li>
+            <li>Visit the published URL.</li>
+          </ol>
+        </div>
+        <div class="code-card">
+          <h3>Built-in test suite</h3>
+          <p>Open the browser console and run <code>runTranslatorTests()</code> to execute 20 phrase checks.</p>
+          <button id="runTests" class="ghost">Run tests now</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="feedbackModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="feedbackTitle">
+    <div class="modal-content">
+      <div class="flex-between">
+        <h3 id="feedbackTitle">Report a wrong translation</h3>
+        <button id="closeModal" class="icon-btn" aria-label="Close">✕</button>
+      </div>
+      <label>Phrase
+        <textarea id="feedbackPhrase" rows="2"></textarea>
+      </label>
+      <label>Expected translation
+        <textarea id="feedbackExpected" rows="2"></textarea>
+      </label>
+      <label>What went wrong?
+        <textarea id="feedbackIssue" rows="3"></textarea>
+      </label>
+      <button id="submitFeedback" class="primary">Submit</button>
+    </div>
+  </div>
+
+  <button id="reportBtn" class="fab" aria-label="Report a wrong translation">Report</button>
+
+  <script src="data/examples.js"></script>
+  <script src="tests/test.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+const TEST_CASES = [
+  { phrase: 'five more than twice a number', expect: '2x + 5' },
+  { phrase: 'three less than twice a variable', expect: '2x - 3' },
+  { phrase: 'the sum of a number and 12', expect: 'x + 12' },
+  { phrase: 'the difference between a number and eight', expect: 'x - 8' },
+  { phrase: 'the product of 4 and a number', expect: '4x' },
+  { phrase: 'the quotient of a number and three', expect: 'x/3' },
+  { phrase: 'x increased by seven', expect: 'x + 7' },
+  { phrase: 'x decreased by four', expect: 'x - 4' },
+  { phrase: 'twice a number', expect: '2x' },
+  { phrase: 'ratio of a to b', expect: 'a/b' },
+  { phrase: 'probability of A given B', expect: 'P(A|B)' },
+  { phrase: 'a number is at most 10', expect: 'x <= 10' },
+  { phrase: 'a number is at least 3', expect: 'x >= 3' },
+  { phrase: 'half of a number', expect: '0.5x' },
+  { phrase: 'twice the sum of a number and five', expect: '2(x + 5)' },
+  { phrase: 'three consecutive integers', expect: 'n, n+1, n+2' },
+  { phrase: 'rate of change of y with respect to x', expect: 'dy/dx' },
+  { phrase: 'area under the curve', expect: '∫ f(x) dx' },
+  { phrase: 'probability of A', expect: 'P(A)' },
+  { phrase: 'four less than a number', expect: 'x - 4' }
+];
